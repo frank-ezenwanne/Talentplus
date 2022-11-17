@@ -1,0 +1,15 @@
+services:
+  api:
+    build: ./displaytalent
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./displaytalent:/displaytalent
+    command: gunicorn displaytalent.wsgi --bind 0.0.0.0:8000
+
+  frontend:
+    build: ./dt_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./dt_frontend:/dt_frontend
